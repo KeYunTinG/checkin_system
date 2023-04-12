@@ -17,7 +17,7 @@ const router = express.Router()
 
 
 
-router.get('/', (req, res) => res.render('login'))
+router.get('/', (req, res) => res.render('home'))
 //router.use('/', generalErrorHandler)
 
 module.exports = router
