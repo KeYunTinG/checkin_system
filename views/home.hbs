@@ -1,1 +1,29 @@
 {{> navbar}}
+<div class="container">
+  <div class="main mx-auto " style="height:200px;  margin-top:200px;">
+    <h3 class="text-center" style="margin:24 auto 40 auto;font-weight:700;font-size: 28px;line-height: 26px;">
+      您好，USER</h3>
+    <form action="/signin" method="POST" style="margin:22px 0;">
+      <div style="text-align:center">
+        <button type="submit" class="btn"
+          style="width:156px; background-color:#0400ff; border-radius:50px; color:#FFFFFF;font-size: 20px;line-height: 30px; margin:0 auto;">
+          打卡
+        </button>
+      </div>
+    </form>
+    <div id="clock" class="text-center" style="margin:auto;"></div>
+  </div>
+</div>
+
+<script>
+  let clock = document.getElementById("clock");
+  function updateTime() {
+    console.log("time is being updated");
+    const timeNow = moment();
+    const timeCanBeReading = timeNow.format("hh:mm:ss A");
+    console.log(timeCanBeReading);
+    clock.textContent = timeCanBeReading;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>

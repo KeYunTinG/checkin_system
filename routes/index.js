@@ -16,7 +16,6 @@ const router = express.Router()
 // router.get('/logout', userController.signout)
 
 
-
 router.get('/', (req, res) => res.render('home'))
 //router.use('/', generalErrorHandler)
 
