@@ -1,7 +1,6 @@
 {
   "name": "checkinsystem",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development node app.js",
@@ -36,5 +35,15 @@
     "sequelize-cli": "^5.5.0",
     "sinon": "^10.0.0",
     "sinon-chai": "^3.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeYunTinG/checkin_system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KeYunTinG/checkin_system/issues"
+  },
+  "homepage": "https://github.com/KeYunTinG/checkin_system#readme",
+  "description": ""
 }
