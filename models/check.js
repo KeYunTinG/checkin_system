@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     workingDay: DataTypes.INTEGER,
     startWork: DataTypes.DATE,
     getOff: DataTypes.DATE,
-    absence: DataTypes.BOOLEAN
+    absence: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Check',

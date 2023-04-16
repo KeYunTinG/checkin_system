@@ -1,5 +1,5 @@
 const express = require('express')
-const helpers = require('./_helpers');
+const helpers = require('./helpers/auth-helpers')
 const session = require('express-session');
 //const passport = require('./config/passport')
 const handlebars = require('express-handlebars')
