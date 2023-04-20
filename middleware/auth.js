@@ -2,7 +2,7 @@ const helpers = require('../helpers/auth-helpers')
 const authenticated = (req, res, next) => {
   // if (req.isAuthenticated)
   if (helpers.ensureAuthenticated(req)) {
-    if (helpers.getUser(req).role === 'admin') return res.redirect('/admin/tweets')
+    if (helpers.getUser(req).isAdmin === true) return res.send('welcome! admin')
     req.user = helpers.getUser(req)
     return next()
   }
@@ -11,7 +11,7 @@ const authenticated = (req, res, next) => {
 const adminAuthenticated = (req, res, next) => {
   // if (req.isAuthenticated)
   if (helpers.ensureAuthenticated(req)) {
-    if (helpers.getUser(req).role === 'admin') return next()
+    if (helpers.getUser(req).isAdmin === true) return next()
     res.redirect('/')
   } else {
     res.redirect('/signin')

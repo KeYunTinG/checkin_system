@@ -2,6 +2,9 @@
 
 const userController = {
 
+    signInPage: (req, res) => {
+        res.render('signin')
+    },
     signIn: (req, res) => {
         req.flash('successMessage', '成功登入!')
         res.redirect('/home');
