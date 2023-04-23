@@ -1,0 +1,13 @@
+{{#if login_successMessage}}
+<div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+  {{successMessage}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#if login_errorMessage}}
+<div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+  {{errorMessage}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
