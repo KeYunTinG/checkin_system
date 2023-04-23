@@ -6,14 +6,14 @@ module.exports = (sequelize, DataTypes) => {
   class Check extends Model {
     static associate(models) {
       Check.belongsTo(models.User, {
-        foreignKey: 'UserId'
+        foreignKey: 'userId'
       });
     }
   };
   Check.init({
-    workingDay: DataTypes.INTEGER,
-    startWork: DataTypes.DATE,
-    getOff: DataTypes.DATE,
+    workingDay: DataTypes.STRING,
+    onLine: DataTypes.DATE,
+    offLine: DataTypes.DATE,
     absence: DataTypes.BOOLEAN,
   }, {
     sequelize,

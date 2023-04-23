@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('checks', {
+    return queryInterface.createTable('Checks', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,17 +9,17 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       working_day: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
-      start_work: {
+      on_line: {
         type: Sequelize.DATE
       },
-      get_off: {
+      off_line: {
         type: Sequelize.DATE
       },
       absence: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
+        type: Sequelize.BOOLEAN
       },
       created_at: {
         allowNull: false,
@@ -32,6 +32,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('checks');
+    return queryInterface.dropTable('Checks');
   }
 };

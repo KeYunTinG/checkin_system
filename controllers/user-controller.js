@@ -3,7 +3,7 @@
 const userController = {
 
     signInPage: (req, res) => {
-        res.render('signin')
+        res.redirect('/signin')
     },
     signIn: (req, res) => {
         req.flash('successMessage', '成功登入!')
@@ -13,9 +13,6 @@ const userController = {
         req.flash('successMessage', '登出成功！');
         req.logout();
         res.redirect('/login');
-    },
-    homepage: (req, res) => {
-        return res.redirect('/home');
     },
 }
 
