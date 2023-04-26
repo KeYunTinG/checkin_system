@@ -27,7 +27,7 @@ const checkinController = {
     } else {
       wMinute = `0${now.getMinutes()}`
     }
-    const checkDay = calendarList.calendar.filter(calendarList => calendarList.西元日期 == today && calendarList.是否放假 == 0)
+    const checkDay = calendarList.calendar.filter(calendarList => calendarList.西元日期 === today && calendarList.是否放假 == 0)
     if (checkDay.length == 1) {
       Check.findOne({ where: { workingDay: today, UserId: helpers.getUser(req).id } }).then(checks => {
         if (checks) {

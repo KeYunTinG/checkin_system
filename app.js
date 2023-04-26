@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const port = process.env.PORT || 3000
 
-app.engine('hbs', handlebars({ extname: '.hbs' }))
+app.engine('hbs', handlebars({ extname: '.hbs', helpers: require('./config/handlebars-helper') }))
 app.set('view engine', 'hbs')
 app.use(methodOverride('_method'));
 app.use(express.static('public'))
