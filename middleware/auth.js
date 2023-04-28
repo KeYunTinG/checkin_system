@@ -2,7 +2,7 @@ const helpers = require('../helpers/auth-helpers')
 const authenticated = (req, res, next) => {
   // if (req.isAuthenticated)
   if (helpers.ensureAuthenticated(req)) {
-    if (helpers.getUser(req).isAdmin === true) return res.send('welcome! admin')
+    if (helpers.getUser(req).isAdmin === true) return res.redirect('/admin/absent')
     req.user = helpers.getUser(req)
     return next()
   }

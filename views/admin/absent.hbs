@@ -1,0 +1,48 @@
+{{>message}}
+<div class="container-fluid">
+  <div class="admin-tweets-list" style="height: 100vh;">
+    <div class="admin-tweets-title" style="text-align: center">
+      <h1>缺勤名單</h1>
+    </div>
+    {{#each checks}}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-auto me-auto">
+            <h4 style="display: inline; vertical-align: middle;">
+              缺勤人員:{{this.User.name}}&nbsp&nbsp&nbsp缺勤日期:{{this.workingDay}}
+            </h4>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+              data-bs-target="#e{{this.id}}">X</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <!-- Modal -->
+    <div class="modal fade" id="e{{this.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">請確認是否修改這筆缺勤資料</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            缺勤人員:{{this.User.name}}&nbsp&nbsp&nbsp缺勤日期:{{this.workingDay}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">返回</button>
+            <form action="/admin/absent/{{this.id}}?_method=PUT" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-primary">改為出勤</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+    <form action="/logout" method="GET" class="d-flex" style="justify-content: center ;margin-top:20px">
+      <button class="btn btn-outline-dark" type="submit">登出</button>
+    </form>
+  </div>
+</div>

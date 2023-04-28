@@ -19,6 +19,7 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
+    "use_env_vars": "PROD_DATABASE_URL",
     "dialect": "mysql",
     "operatorsAliases": false
   }
