@@ -1,12 +1,14 @@
 {
   "name": "checkinsystem",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development node app.js",
     "dev": "cross-env NODE_ENV=development nodemon app.js",
     "test": "mocha test --exit --recursive --timeout 5000",
-    "seed": "npx sequelize db:seed:all"
+    "seed": "npx sequelize db:seed:all",
+    "dbmigrate": "npx sequelize db:migrate && npx sequelize db:seed:all"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +39,9 @@
     "sinon-chai": "^3.3.0"
   },
   "devDependencies": {},
+  "engines": {
+    "node": ">=16.18.0 <17"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KeYunTinG/checkin_system.git"
