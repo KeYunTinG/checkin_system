@@ -2,7 +2,7 @@ const express = require('express')
 const helpers = require('./helpers/auth-helpers')
 const session = require('express-session');
 const passport = require('./config/passport')
-const handlebars = require('express-handlebars')
+const exphbs = require('express-handlebars')
 const routes = require('./routes')
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
@@ -12,7 +12,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const port = process.env.PORT || 3000
 
-app.engine('hbs', handlebars({ extname: '.hbs' }))
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.use(methodOverride('_method'));
 app.use(express.static('public'))

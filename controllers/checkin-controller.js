@@ -3,50 +3,23 @@ const db = require('../models');
 const User = db.User;
 const Check = db.Check;
 const calendarList = require('../calendar.json');
+const moment = require('moment');
 const checkinController = {
   homepage: (req, res) => {
     const User = helpers.getUser(req).name;
     res.render('home', { user: User });
   },
   checkin: (req, res) => {
-    let now = new Date()
-    let today, wMinute, wMonth, wDate
-    if (now.getMonth() >= 10) {
-      wMonth = `${now.getMonth() + 1}`
-    } else {
-      wMonth = `0${now.getMonth() + 1}`
-    }
+    let today, wYear, wMonth, wDate, wHour, nowHour, nowMinute
+    wYear = moment().utcOffset("+03:00").format().slice(0, 4)
+    wMonth = moment().utcOffset("+03:00").format().slice(5, 7)
+    wDate = moment().utcOffset("+03:00").format().slice(8, 10)
+    wHour = moment().utcOffset("+03:00").format().slice(11, 13)
 
-    if (now.getDate() > 10) {
-      wDate = `${now.getDate()}`
-      if (now.getHours() < 5) {
-        wDate = `${now.getDate() - 1}`
-      }
-    } else if (now.getDate() === 10) {
-      wDate = `${now.getDate()}`
-      if (now.getHours() < 5) {
-        wDate = `0${now.getDate() - 1}`
-      }
-    } else {
-      wDate = `0${now.getDate()}`
-      if (now.getHours() < 5) {
-        wDate = `0${now.getDate() - 1}`
-      }
-    }
-    if (wDate == '00') {
-      wDate = new Date(now.getFullYear(), now.getMonth(), 0).getDate()
-      if (now.getMonth() > 10) {
-        wMonth = `${now.getMonth()}`
-      } else {
-        wMonth = `0${now.getMonth()}`
-      }
-    }
-    today = `${now.getFullYear()}${wMonth}${wDate}`
-    if (now.getMinutes() >= 10) {
-      wMinute = `${now.getMinutes()}`
-    } else {
-      wMinute = `0${now.getMinutes()}`
-    }
+    nowHour = moment().format().slice(11, 13)
+    nowMinute = moment().format().slice(14, 16)
+    let now = new Date()
+    today = `${wYear}${wMonth}${wDate}`
     const checkDay = calendarList.calendar.filter(calendarList => calendarList.西元日期 === today && calendarList.是否放假 == 0)
     if (checkDay.length == 1) {
       Check.findOne({ where: { workingDay: today, UserId: helpers.getUser(req).id } }).then(checks => {
@@ -59,7 +32,7 @@ const checkinController = {
               absence: true
             })
               .then(() => {
-                req.flash('successMessage', `${now.getHours()}:${wMinute},下班打卡成功!`)
+                req.flash('successMessage', `${nowHour}:${nowMinute},下班打卡成功!`)
                 return res.redirect('/home');
               })
               .catch(() => {
@@ -71,7 +44,7 @@ const checkinController = {
               offLine: now
             })
               .then(() => {
-                req.flash('errorMessage', `${now.getHours()}:${wMinute},下班打卡成功!，出勤未滿8小時`)
+                req.flash('errorMessage', `${nowHour}:${nowMinute},下班打卡成功!，出勤未滿8小時`)
                 return res.redirect('/home');
               })
               .catch(() => {
@@ -86,7 +59,7 @@ const checkinController = {
             UserId: helpers.getUser(req).id,
           })
             .then(() => {
-              req.flash('successMessage', `${now.getHours()}:${wMinute},上班打卡成功!`)
+              req.flash('successMessage', `${nowHour}:${nowMinute},上班打卡成功!`)
               return res.redirect('/home');
             })
             .catch(() => {
