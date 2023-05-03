@@ -16,8 +16,8 @@ const checkinController = {
     wDate = moment().utcOffset("+03:00").format().slice(8, 10)
     wHour = moment().utcOffset("+03:00").format().slice(11, 13)
 
-    nowHour = moment().format().slice(11, 13)
-    nowMinute = moment().format().slice(14, 16)
+    nowHour = moment().utcOffset("+08:00").format().slice(11, 13)
+    nowMinute = moment().utcOffset("+08:00").format().slice(14, 16)
     let now = new Date()
     today = `${wYear}${wMonth}${wDate}`
     const checkDay = calendarList.calendar.filter(calendarList => calendarList.西元日期 === today && calendarList.是否放假 == 0)
