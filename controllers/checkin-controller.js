@@ -10,18 +10,38 @@ const checkinController = {
   },
   checkin: (req, res) => {
     let now = new Date()
-    let today, wMinute
+    let today, wMinute, wMonth, wDate
     if (now.getMonth() >= 10) {
-      today = `${now.getFullYear()}${now.getMonth() + 1}${now.getDate()}`
+      wMonth = `${now.getMonth() + 1}`
+    } else {
+      wMonth = `0${now.getMonth() + 1}`
+    }
+
+    if (now.getDate() > 10) {
+      wDate = `${now.getDate()}`
       if (now.getHours() < 5) {
-        today = `${now.getFullYear()}${now.getMonth() + 1}${now.getDate() - 1}`
+        wDate = `${now.getDate() - 1}`
+      }
+    } else if (now.getDate() === 10) {
+      wDate = `${now.getDate()}`
+      if (now.getHours() < 5) {
+        wDate = `0${now.getDate() - 1}`
       }
     } else {
-      today = `${now.getFullYear()}0${now.getMonth() + 1}${now.getDate()}`
+      wDate = `0${now.getDate()}`
       if (now.getHours() < 5) {
-        today = `${now.getFullYear()}0${now.getMonth() + 1}${now.getDate() - 1}`
+        wDate = `0${now.getDate() - 1}`
       }
     }
+    if (wDate == '00') {
+      wDate = new Date(now.getFullYear(), now.getMonth(), 0).getDate()
+      if (now.getMonth() > 10) {
+        wMonth = `${now.getMonth()}`
+      } else {
+        wMonth = `0${now.getMonth()}`
+      }
+    }
+    today = `${now.getFullYear()}${wMonth}${wDate}`
     if (now.getMinutes() >= 10) {
       wMinute = `${now.getMinutes()}`
     } else {
