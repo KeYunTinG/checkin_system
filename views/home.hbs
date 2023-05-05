@@ -2,7 +2,7 @@
 <div class="container">
   <div class="main mx-auto " style="height:200px;  margin-top:200px;">
     <h3 class="text-center" style="margin:24 auto 40 auto;font-weight:700;font-size: 28px;line-height: 26px;">
-      您好，{{user}}</h3>
+      您好，{{username}}</h3>
     <form action="/checkin" method="POST" style="margin:22px 0;">
       <div style="text-align:center">
         <button type="submit" class="btn"
@@ -12,6 +12,25 @@
       </div>
     </form>
     <div id="clock" class="text-center" style="margin:auto;"></div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="admin-tweets-list" style="height: 100vh;">
+    <div class="admin-tweets-title" style="text-align: center">
+      <h1>打卡紀錄</h1>
+    </div>
+    {{#each checks}}
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-auto me-auto">
+            <h4 style="display: inline; vertical-align: middle;">
+              日期:{{this.workingDay}}&nbsp上班時間:{{this.onLine}}&nbsp下班時間:{{this.offLine}}&nbsp工時:{{this.workTime}}&nbsp狀態:{{this.status}}
+          </div>
+        </div>
+      </li>
+    </ul>
+    {{/each}}
   </div>
 </div>
 

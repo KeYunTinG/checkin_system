@@ -12,9 +12,13 @@ module.exports = (sequelize, DataTypes) => {
   };
   Check.init({
     workingDay: DataTypes.STRING,
-    onLine: DataTypes.DATE,
-    offLine: DataTypes.DATE,
+    onLine: DataTypes.STRING,
+    offLine: DataTypes.STRING,
+    workTime: DataTypes.INTEGER,
+    status: DataTypes.STRING,
     absence: DataTypes.BOOLEAN,
+    createdAt: DataTypes.DATE,
+    updatedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'Check',

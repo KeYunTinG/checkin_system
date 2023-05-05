@@ -12,14 +12,21 @@ module.exports = {
         type: Sequelize.STRING
       },
       on_line: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
       },
       off_line: {
-        type: Sequelize.DATE
+        type: Sequelize.STRING
+      },
+      work_time: {
+        defaultValue: 0,
+        type: Sequelize.INTEGER
       },
       absence: {
         defaultValue: false,
         type: Sequelize.BOOLEAN
+      },
+      status: {
+        type: Sequelize.STRING
       },
       created_at: {
         allowNull: false,

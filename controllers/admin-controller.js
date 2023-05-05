@@ -11,7 +11,7 @@ const adminController = {
       nest: true
     })
       .then(checks => {
-        if (!checks) throw new Error("Restaurant didn't exist!")
+        if (!checks) throw new Error("Check didn't exist!")
         checks = checks.filter(Check => Check.absence == false)
         res.render('admin/absent', { checks })
       })
