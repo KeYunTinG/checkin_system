@@ -23,7 +23,8 @@ const adminController = {
     Check.findByPk(req.params.id)
       .then(checks => {
         checks.update({
-          absence: true
+          absence: true,
+          status: '完成出勤',
         })
           .then(() => {
             req.flash('successMessage', '修改成功');
